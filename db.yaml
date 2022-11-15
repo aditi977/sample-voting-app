@@ -1,31 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: db
   labels:
     app: voting-app
     component: db
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: voting-app
-      component: db
-  template:
-    metadata:
-      name: db
-      labels:
-        app: voting-app
-        component: db
-    spec:
-      containers:
-      - name: database
-        image: postgres:9.6
-        env:
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
-          value: postgres
+  containers:
+  - name: database
+    image: postgres:9.6
+    env:
+    - name: POSTGRES_USER
+      value: postgres
+    - name: POSTGRES_PASSWORD
+      value: postgres
 
 ---
 apiVersion: v1

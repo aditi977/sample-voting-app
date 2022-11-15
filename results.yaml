@@ -1,26 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: results
+  name: results-app
   labels:
     app: voting-app
     component: results-app
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: voting-app
-      component: results-app
-  template:
-    metadata:
-      name: results-app
-      labels:
-        app: voting-app
-        component: results-app
-    spec:
-      containers:
-      - name: results-app
-        image: dockersamples/examplevotingapp_result
+  containers:
+  - name: results-app
+    image: dockersamples/examplevotingapp_result
 
 ---
 apiVersion: v1
@@ -33,4 +21,3 @@ spec:
     component: results-app
   ports:
   - port: 80
-  type: NodePort

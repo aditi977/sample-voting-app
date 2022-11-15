@@ -1,23 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: worker
   labels:
     app: voting-app
     component: worker
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: voting-app
-      component: worker
-  template:
-    metadata:
-      name: worker
-      labels:
-        app: voting-app
-        component: worker
-    spec:
-      containers:
-      - name: worker
-        image: mikesir87/votingapp-worker
+  containers:
+  - name: worker
+    image: mikesir87/votingapp-worker

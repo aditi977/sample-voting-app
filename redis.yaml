@@ -1,26 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: redis
   labels:
     app: voting-app
     component: redis
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: voting-app
-      component: redis
-  template:
-    metadata:
-      name: redis
-      labels:
-        app: voting-app
-        component: redis
-    spec:
-      containers:
-      - name: redis
-        image: redis:alpine
+  containers:
+  - name: redis
+    image: redis:alpine
 
 ---
 
