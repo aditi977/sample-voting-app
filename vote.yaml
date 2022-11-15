@@ -6,7 +6,7 @@ metadata:
     app: voting-app
     component: voting-app
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: voting-app
